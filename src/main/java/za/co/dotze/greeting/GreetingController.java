@@ -19,7 +19,7 @@ public class GreetingController {
 
     @RequestMapping(value = "/", method = GET)
     public String defaultPage() {
-        return "<a href=https://gentle-waters-91664.herokuapp.com/greeting>Click Here! To see the magic</a>";
+        return "/greeting";
     }
 
     @RequestMapping(value = "/greeting", method = GET)
