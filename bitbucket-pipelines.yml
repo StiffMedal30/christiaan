@@ -12,6 +12,5 @@ pipelines:
     - step:
         caches:
           - maven
-          - node
         script:
           - mvn -B clean package
