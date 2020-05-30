@@ -14,12 +14,12 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
  */
 @RestController
 public class GreetingController {
-    private final String template = "Hello %s!";
     private final AtomicLong counter = new AtomicLong();
+    private final String template = "Hello %s!";
 
     @RequestMapping(value = "/", method = GET)
-    public String defaultPage() {
-        return "/greeting";
+    public Greeting defaultPage(@RequestParam(value = "name", defaultValue = "People") final String name) {
+        return greeting(name);
     }
 
     @RequestMapping(value = "/greeting", method = GET)
