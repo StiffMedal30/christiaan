@@ -12,7 +12,7 @@
     <artifactId>spring-boot_rest</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-boot_rest</name>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <description>Demo project for Spring Boot Rest Controller</description>
 
     <properties>
