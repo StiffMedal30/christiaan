@@ -1,4 +1,3 @@
-image: maven:3.6.1
 pipelines:
   default:
     - step:
@@ -6,16 +5,17 @@ pipelines:
           - maven
         script:
           - mvn -B clean
-          - pipe: atlassian/ftp-deploy:0.3.2
-            variables:
-              USER: '$user'
-              PASSWORD: '$password'
-              SERVER: 'christiaandotze.dedicated.co.za'
-              REMOTE_PATH: '../opt/tomcat/webapps'
   branches:
-    master:
-      - step:
-          caches:
-            - maven
-          script:
-            - mvn -B clean package
+   master:
+   - step:
+       caches:
+         - maven
+       script:
+         - mvn -B clean package
+       artifacts:
+         - application/target/**
+   - step:
+       name: Deploy to Production
+       deployment: Production
+       script:
+         - scp ./application/target/*.war root@$christiaandotze.dedicated.co.za:/opt/tomcat/webapps/spring-boot_rest-0.0.1-SNAPSHOT.war
