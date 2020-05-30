@@ -9,8 +9,20 @@ pipelines:
           - mvn -B clean
   branches:
     master:
-    - step:
-        caches:
-          - maven
-        script:
-          - mvn -B clean package
+      - step:
+          caches:
+            - maven
+          script:
+            - mvn -B clean package
+
+            script:
+              - pipe: atlassian/ftp-deploy:0.3.2
+                variables:
+                  USER: 'user'
+                  PASSWORD: 'password'
+                  SERVER: 'christiaandotze.dedicated.co.za'
+                  REMOTE_PATH: '../opt/tomcat/webapps'
+                  # LOCAL_PATH: '<string>' # Optional
+                  # DEBUG: '<boolean>' # Optional
+                  # EXTRA_ARGS: '<string>' # Optional.
+                  # DELETE_FLAG: '<boolean>' # Optional.

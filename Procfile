@@ -1,1 +1,1 @@
-web: java -jar target/spring-boot_rest-0.0.1-SNAPSHOT.jar
+web: java -war target/spring-boot_rest-0.0.1-SNAPSHOT.war
