@@ -13,9 +13,9 @@ pipelines:
        script:
          - mvn -B clean package
        artifacts:
-         - application/target/**
+         - /target/**
    - step:
        name: Deploy to Production
        deployment: Production
        script:
-         - scp ./application/target/*.jar root@christiaandotze.dedicated.co.za:/opt/tomcat/webapps/spring-boot_rest-0.0.1-SNAPSHOT.jar
+         - scp ./target/*.jar root@christiaandotze.dedicated.co.za:/opt/tomcat/webapps/spring-boot_rest-0.0.1-SNAPSHOT.jar
