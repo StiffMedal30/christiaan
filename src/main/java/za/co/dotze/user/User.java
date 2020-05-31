@@ -1,7 +1,5 @@
 package za.co.dotze.user;
 
-import sun.swing.plaf.GTKKeybindings;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
