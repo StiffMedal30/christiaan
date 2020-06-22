@@ -1,3 +1,4 @@
+image: 3.6.3-ibmjava-8-alpine
 pipelines:
   default:
     - step:
@@ -11,7 +12,7 @@ pipelines:
        caches:
          - maven
        script:
-         - mvn -B clean package
+         - mvn -B clean compile package
        artifacts:
          - target/**
    - step:
