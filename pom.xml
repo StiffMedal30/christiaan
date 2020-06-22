@@ -8,9 +8,9 @@
         <version>2.1.2.RELEASE</version>
     </parent>
     <groupId>za.co.dotze</groupId>
-    <artifactId>spring-boot_rest</artifactId>
+    <artifactId>christiaan</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot_rest</name>
+    <name>christiaan</name>
     <packaging>jar</packaging>
     <description>Demo project for Spring Boot Rest Controller</description>
 
