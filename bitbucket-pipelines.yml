@@ -11,7 +11,7 @@ pipelines:
        caches:
          - maven
        script:
-         - mvn -B clean package
+         - mvn -B clean compile package
        artifacts:
          - target/**
    - step:
