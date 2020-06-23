@@ -1,0 +1,23 @@
+image: maven:3.3.9
+pipelines:
+  default:
+    - step:
+        caches:
+          - maven
+        script:
+          - mvn -B clean
+  branches:
+    master:
+      - step:
+          caches:
+            - maven
+          script:
+            - mvn -B clean compile package
+          artifacts:
+            - target/**
+      - step:
+          name: Deploy to Production
+          deployment: Production
+          script:
+            - scp target/*.jar root@christiaandotze.dedicated.co.za:/opt/myapp/christiaan-0.0.1-SNAPSHOT.jar
+            - ssh root@christiaandotze.dedicated.co.za 'cd /opt/myapp/ && sh startup.sh'
