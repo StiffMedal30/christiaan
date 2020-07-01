@@ -1,0 +1,19 @@
+.background-color{
+	
+	color: aliceblue;
+	text-align: center;
+	width: 100%;
+	margin: auto;
+	height: 100%;
+}
+
+.jumbotron{
+	background-color: #373737;
+	border-radius: 0px;
+	height: 100px;
+}
+
+.navbar{
+	background-color: #373737;
+}
+
