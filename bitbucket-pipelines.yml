@@ -19,6 +19,6 @@ pipelines:
           name: Deploy to Production
           deployment: Production
           script:
-            - scp ./target/*.jar root@christiaandotze.dedicated.co.za:/opt/myapp/christiaan-0.0.1-SNAPSHOT.jar
             - scp ./Dockerfile root@christiaandotze.dedicated.co.za:/opt/myapp/Dockerfile
+            - scp ./target/*.jar root@christiaandotze.dedicated.co.za:/opt/myapp/christiaan-0.0.1-SNAPSHOT.jar
             - ssh root@christiaandotze.dedicated.co.za 'cd /opt/myapp/ && sh startup.sh'
