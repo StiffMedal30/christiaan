@@ -11,23 +11,11 @@ import org.springframework.web.servlet.ModelAndView;
  * Date   : 31 May 2020
  */
 @Controller()
-public class UserController {
+public class HomeController {
 
     @RequestMapping("/")
     public String index() {
         System.out.println("Home");
         return "index";
-    }
-
-    @RequestMapping("/about")
-    public String about() {
-        System.out.println("About");
-        return "about";
-    }
-
-    @RequestMapping("/projects")
-    public String projects() {
-        System.out.println("Projects");
-        return "projects";
     }
 }
