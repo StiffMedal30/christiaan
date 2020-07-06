@@ -7,6 +7,21 @@ pipelines:
         script:
           - mvn -B clean
   branches:
+    qa:
+      - step:
+          caches:
+            - maven
+          script:
+            - mvn -B clean compile package
+          artifacts:
+            - target/**
+      - step:
+          name: Deploy to QA
+          deployment: Qa
+          script:
+            - scp ./Dockerfile root@christiaandotze.dedicated.co.za:/opt/christiaan/qa/Dockerfile
+            - scp ./target/*.jar root@christiaandotze.dedicated.co.za:/opt/christiaan/qa/christiaan-0.0.1-SNAPSHOT.jar
+            - ssh root@christiaandotze.dedicated.co.za 'cd /opt/christiaan/qa/ && sh startupqa.sh'
     master:
       - step:
           caches:
@@ -19,6 +34,6 @@ pipelines:
           name: Deploy to Production
           deployment: Production
           script:
-            - scp ./Dockerfile root@christiaandotze.dedicated.co.za:/opt/myapp/Dockerfile
-            - scp ./target/*.jar root@christiaandotze.dedicated.co.za:/opt/myapp/christiaan-0.0.1-SNAPSHOT.jar
-            - ssh root@christiaandotze.dedicated.co.za 'cd /opt/myapp/ && sh startup.sh'
+            - scp ./Dockerfile root@christiaandotze.dedicated.co.za:/opt/christiaan/prod/Dockerfile
+            - scp ./target/*.jar root@christiaandotze.dedicated.co.za:/opt/christiaan/prod/christiaan-0.0.1-SNAPSHOT.jar
+            - ssh root@christiaandotze.dedicated.co.za 'cd /opt/christiaan/prod/ && sh startup.sh'
